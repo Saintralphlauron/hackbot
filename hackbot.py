@@ -18,7 +18,7 @@ def handle(msg):
 		chat_id = msg['chat']['id']
 		command = msg['text']
 
-		print "Got Command : %s " %command
+		print("Got Command : %s ") %command
 		bot.sendMessage(chat_id,'\xF0\x9F\x98\x81 Welcome to -+ HackBot v1.2 +- (https://goo.gl/mxQ4Sv) \xE2\x9C\x94')
 	
 	#welcome screen and help
@@ -65,14 +65,14 @@ def handle(msg):
 			mm=words[1]
 			cmd=words[2]+' '+words[3]
 			final=words[2:]
-			print map(str,final)
+			print (map(str,final))
 			makeitastring = ' '.join(map(str, final))
-			print makeitastring
+			print (makeitastring)
 			directory='/root/Desktop/pentest/'+str(mm)
 			bot.sendMessage(chat_id,"\xF0\x9F\x92\xBC your Path: "+str(directory))
 			
 			if os.path.isdir(directory):
-				print "PATH IS OK"
+				print ("PATH IS OK")
 				try:
 					os.chdir(directory)
 					bot.sendMessage(chat_id,"\xF0\x9F\x93\x81 Changing Directory to: "+str(directory))
@@ -93,7 +93,7 @@ def handle(msg):
 		elif command.startswith('wiki') or command.startswith('Wiki'):
 			try:
 				makesplit=command[5:]
-				print makesplit
+				print (makesplit)
 				wiksearch = wikipedia.summary(makesplit,sentences=10)
 				bot.sendMessage(chat_id,wiksearch+'\n'+wikipedia.page(makesplit).url)
 			except Exception as e:
@@ -105,7 +105,7 @@ def handle(msg):
 		#btc price
 		elif command.startswith('btc') or command.startswith('Btc'):
 				arg1=command[4:]
-				print arg1
+				print (arg1)
 				url= "https://www.google.co.in/search?q=bitcoin+to+"+arg1
 				req = urllib2.Request(url, headers={'User-Agent' : "Magic Browser"}) 
 				con = urllib2.urlopen( req )
@@ -159,11 +159,11 @@ def handle(msg):
 		elif command.startswith('tweet') or command.startswith('Tweet'):
 			twords=command.split()
 			tname=twords[1]
-			print tname
+			print (tname)
 			timetweets=twords[2]
-			print timetweets
+			print (timetweets)
 			turl = "https://twitter.com/search?q="+tname+"&src=typd&lang=en"
-			print turl
+			print (turl)
 			bot.sendMessage(chat_id,'\xF0\x9F\x9A\x80  Loading Tweets!  \xF0\x9F\x9A\x80')
 			response = urllib2.urlopen(turl)
 			html = response.read()
@@ -281,8 +281,8 @@ def handle(msg):
 			title = vid['title']
 			titleshorten = title[0:12]
 			print "Shorten Title is : "+titleshorten
-			print title
-			#print link
+			print (title)
+			#print (link)
 			bot.sendMessage(chat_id,title+"\n"+link)
 			#bot.sendMessage(chat_id,'Audio File is on the Way , Wait....\n')
 	
@@ -301,9 +301,9 @@ def handle(msg):
 			for i,line in enumerate(os.listdir('.')):
 				if titleshorten in line:
 					thatline = line
-					print 'Thatline: '+thatline
+					print ('Thatline: '+thatline)
 					bot.sendAudio(chat_id,audio=open(thatline,'rb'))
-					print "Sent!"
+					print ("Sent!")
 					os.remove(thatline)
 		else:
 			bot.sendMessage(chat_id,'\xF0\x9F\x98\x88 [+] Got Command \xF0\x9F\x98\x88')
@@ -322,8 +322,8 @@ api = open('api.txt','r')
 api_cont = api.read().strip()
 bot = telepot.Bot(api_cont)
 bot.message_loop(handle)
-print '[+] Server is Listenining [+]'
-print '[=] Type Command from Messenger [=]'
+print ('[+] Server is Listenining [+]')
+print ('[=] Type Command from Messenger [=]')
 
 while 1:
 		time.sleep(10)
